@@ -1,0 +1,104 @@
+/* режим размещения */
+body.is-placing{
+	cursor: move !important;
+	background-color: #b9b9b9;
+	transition: background-color linear 0.5s;
+}
+body.is-placing .game-table{
+	background-color: #fff;
+}
+body.is-placing .circle{
+	cursor: move !important;
+}
+body.is-loading .loader{
+	display: block;
+}
+.loader{
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	margin: 0 auto;
+	margin: auto;
+}
+
+/* кнопки управления */
+.controls__main-group{
+	margin: 15px auto;
+}
+.controls__random{
+	cursor: pointer;
+}
+.controls__random-figures{
+	cursor: pointer;
+}
+.controls__clear{
+	cursor: pointer;
+}
+.controls__size_rebuild{
+	cursor: pointer;
+}
+/* игровая зона */
+.app{
+	padding: 5px;
+	background-color: #fff;
+	position: relative;
+	z-index: 2;
+}
+.circle{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.cell-block_alive .circle{
+	background-color: black;
+}
+/* блок статистики */
+.statistics__block{
+	line-height: 1.1;
+}
+.input__timeout{
+	width: 65px !important;
+	flex: 0 1 auto !important;
+	cursor: default !important;
+}
+.button__timeout{
+	cursor: pointer;
+}
+/* блок выбора фигур */
+.shapes__block label{
+	margin-bottom: 0;
+}
+.shapes__block .form-group{
+	margin-bottom: 5px;
+}
+.shapes__block .custom-select{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 15px;
+	height: auto !important;
+}
+.shape__label:first-letter{
+	text-transform: uppercase;
+}
+.shape__select option:first-letter{
+	text-transform: uppercase;
+}
+.control__size_button{
+	padding: 4px 11px;
+	font-size: 13px;
+	cursor: pointer;
+}
+.control__size_input{
+	padding: 4px 3px;
+	font-size: 13px;
+	cursor: pointer;
+}
+.control__size_input[disabled]{
+	cursor: default;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Convay's game of life</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <img src="images/loader.svg" alt="" class="loader">
+    <!-- top inputs -->
+    <div class="container-fluid">
+      
+      <div class="row align-items-top main-row">
+        <div class="col-2 top-inputs">
+          <div class="row">
+            <div class="col-12 mb-3 d-flex justify-content-between align-items-end">
+              <div class="btn-group mb-0 mt-1 controls__main-group">
+                <button type="button" class="btn btn-danger control__stop" disabled="disabled">Стоп</button>
+                <button type="button" class="btn btn-success control__start">Старт</button>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm control__clear">Очистить</button>
+            </div>
+            <div class="col-12 mb-3 text-center">
+              <div class="row">
+                <div class="col-4 mb-1 text-center">
+                  <button type="button" class="btn btn-secondary btn-sm control__random">Случайно</button>
+                </div>
+                <div class="col-8 mb-1">
+                  <button type="button" class="btn btn-secondary btn-sm control__random-figures">Случайно фигурами</button>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="control__random_slider"></div>
+                </div>
+                <div class="col-2">
+                  <span class="control__random_number">20</span>%
+                </div>
+              </div>
+            </div>
+            <div class="col-12 statistics__block"><!--statictics block -->
+              <div class="row justify-content-between">
+                <div class="col-6">
+                  <div class="mb-2">Шаг № <mark><span class="count__step-number">0</span></mark></div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-2">Клеток: <mark><span class="count__active-cells">0</span></mark></div>
+                </div>
+              </div>
+              <div class="row justify-content-between align-items-center">
+                <div class="col-8 mb-2">
+                  <div>Длительность последнего шага: </div>
+                </div>
+                <div class="col-auto">
+                  <div><mark><span class="count__last-step">000</span></mark> mc</div>
+                </div>
+                <div class="col-8 mb-2">
+                  <div>Средняя длительность шага: </div>
+                </div>
+                <div class="col-auto">
+                  <mark><span class="count__average-step">000</span></mark> mc
+                </div>
+                <div class="col-8 mb-2">
+                  <div>Наибольшая длительность шага: </div>
+                </div>
+                <div class="col-auto">
+                  <mark><span class="count__max-step">000</span></mark> mc
+                </div>
+              </div><!-- /.row -->
+            </div>
+            <div class="col-12 text-center pr-0"><!-- Выбор таймаута -->
+              <div class="form-group row no-gutters mb-1 align-items-center">
+                <div class="col-12 mb-1">
+                  <div class="control__timeput">Timeout, <span class="control__timeout_ms"></span>mc</div>
+                </div>
+                <div class="col-12 ">
+                  <div class="control__timeout_slider"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mb-2 text-center pr-0 shapes__block"></div><!-- выбор фигур -->
+            <div class="col-12 pr-0"><!-- изменение размера клетки -->
+              <div>Размер клетки, рх: </div>
+              <div class="row mb-1">
+                <div class="col-6 d-flex justify-content-between align-items-center">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-outline-danger control__size_button control__size_button_minus">-</button>
+                    </span>
+                    <input type="text" class="form-control text-center control__size_input" value="20" disabled="" autocomplete="off">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-outline-success control__size_button control__size_button_plus">+</button>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-outline-warning btn-sm control__size_rebuild">Пересоздать</button>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.row  -->
+        </div><!-- /.top-inputs  -->
+        <div class="col-10 justify-content-center">
+          <div class="app"></div>
+        </div>
+      </div><!-- /.row  -->
+    </div><!-- /.container  -->
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="  crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
